@@ -1,3 +1,55 @@
+# 网络空间安全概论：图像加密算法研究与改进
+
+## 仓库目录结构
+
+```
+.
+├───algorithms/		四种图像加密算法目录		
+	|
+	├───BaseCrypto.py				四个算法的公共接口
+	|
+	├───ArnoldCatCrypto.py			基于Arnold-Cat混沌系统的图像加密算法
+	|
+	├───LogisticCrypto.py			基于Logistic混沌系统的图像加密算法
+	|	
+	├───LogisticKeyMixingCrypto.py	基于密钥混合的Logistic图像加密算法
+	|
+	├───RSACrypto.py				基于图像分块的RSA图像加密算法
+	|
+	└───__init__.py					python软件包初始化文件
+	
+├───assets/			测试图片目录
+│   
+├───demo_files/		代码说明文档用到的演示图片目录
+|  
+├───.gitignore		git忽略规则文件
+|   
+├───README.md		代码说明文档
+|   
+├───U202215566_刘师言_图像加密算法研究与改进/		课程报告
+|   
+├───demo.ipynb		代码演示程序
+|
+└───utils.py		工具类
+```
+
+## requirements
+
+```
+numpy
+python-opencv
+tqdm
+PIL
+Crypto
+matplotlib
+```
+
+
+
+---
+
+## `demo.ipynb`运行演示
+
 ```python
 from algorithms import RSACrypto, ArnoldCatCrypto, LogisticCrypto, LogisticKeyMixingCrypto
 from utils import *
@@ -16,7 +68,6 @@ imshow(img1, img2, titles=["test1", "test2"])
 ```
 
 
-​    
 ![png](demo_files/demo_2_0.png)
 ​    
 
@@ -752,4 +803,4 @@ imshow(img2, test2_logistic_km_attacked, titles=["test2", "test2_logistic_km_att
 
 
 ![png](demo_files/demo_75_1.png)
-   
+
