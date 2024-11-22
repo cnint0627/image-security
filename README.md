@@ -18,7 +18,7 @@
 	|
 	└───__init__.py                 python软件包初始化文件
 	
-├───assets/             测试图片目录
+├───assets/                 测试图片目录
 │   
 ├───demo_files/		    代码说明文档用到的演示图片目录
 |  
@@ -26,7 +26,7 @@
 |   
 ├───README.md		    代码说明文档
 | 
-├───requirements.txt    软件包依赖
+├───requirements.txt        软件包依赖
 | 
 ├───U202215566_刘师言_图像加密算法研究与改进/		课程报告
 |   
