@@ -14,7 +14,7 @@ def imshow(*imgs, titles=None):
     for i, (img, title) in enumerate(zip(imgs, titles), 1):
         plt.subplot(1, len(imgs), i)
         plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-        plt.title(title, fontsize=16, pad=10, color='white')
+        plt.title(title, fontsize=16, pad=10, color='black')
         plt.axis('off')
 
     plt.tight_layout()

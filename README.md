@@ -16,9 +16,9 @@ imshow(img1, img2, titles=["test1", "test2"])
 ```
 
 
-    
+​    
 ![png](demo_files/demo_2_0.png)
-    
+​    
 
 
 ---
@@ -47,8 +47,8 @@ test1_rsa_encrypted = rsa.encrypt(img1)
       0%|          | 0/919 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.48s
-    
+    Encryption time: 0.44s
+
 
 ### RSA: 图像解密 (正确)
 
@@ -62,8 +62,8 @@ test1_rsa_decrypted = rsa.decrypt(test1_rsa_encrypted, key=private_key) # 该过
       0%|          | 0/923 [00:00<?, ?it/s]
 
 
-    Decryption time: 2.51s
-    
+    Decryption time: 2.48s
+
 
 
 ```python
@@ -71,9 +71,9 @@ imshow(img1, test1_rsa_encrypted, test1_rsa_decrypted, titles=["test1", "test1_r
 ```
 
 
-    
+​    
 ![png](demo_files/demo_10_0.png)
-    
+​    
 
 
 ### RSA : 图像解密 (错误)
@@ -89,8 +89,8 @@ test1_rsa_decrypted_wrong = rsa.decrypt(test1_rsa_encrypted, key=private_key_wro
       0%|          | 0/923 [00:00<?, ?it/s]
 
 
-    Decryption time: 2.40s
-    
+    Decryption time: 2.43s
+
 
 
 ```python
@@ -98,9 +98,9 @@ imshow(img1, test1_rsa_encrypted, test1_rsa_decrypted_wrong, titles=["test1", "t
 ```
 
 
-    
+​    
 ![png](demo_files/demo_13_0.png)
-    
+​    
 
 
 ### RSA: 评价指标
@@ -114,9 +114,9 @@ draw_intensity_histogram(img1, test1_rsa_encrypted)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_16_0.png)
-    
+​    
 
 
 #### Adjacent Pixel Auto-Correlation
@@ -128,9 +128,9 @@ draw_adjacent_pixel_auto_correlation(img1, test1_rsa_decrypted)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_18_0.png)
-    
+​    
 
 
 ---
@@ -159,14 +159,14 @@ test2_arnold_encrypted = arnold.encrypt(img2)
 
 
     Encryption time: 0.05s
-    
+
 
 
       0%|          | 0/20 [00:00<?, ?it/s]
 
 
     Encryption time: 0.19s
-    
+
 
 ### ArnoldCat : 图像解密 (正确)
 
@@ -182,14 +182,14 @@ test2_arnold_decrypted = arnold.decrypt(test2_arnold_encrypted, arnold_key)
 
 
     Encryption time: 0.04s
-    
+
 
 
       0%|          | 0/20 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.19s
-    
+    Encryption time: 0.18s
+
 
 
 ```python
@@ -198,13 +198,13 @@ imshow(img2, test2_arnold_encrypted, test2_arnold_decrypted, titles=["test2", "t
 ```
 
 
-    
+​    
 ![png](demo_files/demo_26_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_26_1.png)
     
 
@@ -224,14 +224,14 @@ test2_arnold_decrypted_wrong = arnold.decrypt(test2_arnold_decrypted, arnold_key
 
 
     Encryption time: 0.04s
-    
+
 
 
       0%|          | 0/20 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.18s
-    
+    Encryption time: 0.19s
+
 
 
 ```python
@@ -240,13 +240,13 @@ imshow(img2, test2_arnold_encrypted, test2_arnold_decrypted_wrong, titles=["test
 ```
 
 
-    
+​    
 ![png](demo_files/demo_29_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_29_1.png)
     
 
@@ -264,13 +264,13 @@ draw_intensity_histogram(img2, test2_arnold_encrypted, is_gray=True)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_32_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_32_1.png)
     
 
@@ -286,13 +286,13 @@ draw_adjacent_pixel_auto_correlation(img2, test2_arnold_encrypted)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_34_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_34_1.png)
     
 
@@ -312,14 +312,14 @@ test2_arnold_attacked = arnold.decrypt(test2_arnold_encrypted, arnold_key_attack
 
 
     Encryption time: 0.04s
-    
+
 
 
       0%|          | 0/19 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.15s
-    
+    Encryption time: 0.18s
+
 
 
 ```python
@@ -328,13 +328,13 @@ imshow(img2, test2_arnold_attacked, titles=["test2", "test2_arnold_attacked"])
 ```
 
 
-    
+​    
 ![png](demo_files/demo_37_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_37_1.png)
     
 
@@ -347,7 +347,7 @@ imshow(img2, test2_arnold_attacked, titles=["test2", "test2_arnold_attacked"])
 
 ```python
 # Logistic: 初始化
-logistic_key = (3.6, 0.6)
+logistic_key = (3.6, 0.6, 3)
 logistic = LogisticCrypto(logistic_key)
 ```
 
@@ -361,18 +361,18 @@ test2_logistic_encrypted = logistic.encrypt(img2)
 ```
 
 
-      0%|          | 0/256 [00:00<?, ?it/s]
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Encrypt time: 0.14s
-    
+    Encrypt time: 0.23s
 
 
-      0%|          | 0/512 [00:00<?, ?it/s]
+
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Encrypt time: 0.48s
-    
+    Encrypt time: 0.94s
+
 
 ### Logistic: 图像解密 (正确)
 
@@ -384,18 +384,18 @@ test2_logistic_decrypted = logistic.decrypt(test2_logistic_encrypted, logistic_k
 ```
 
 
-      0%|          | 0/256 [00:00<?, ?it/s]
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.14s
-    
+    Decrypt time: 0.25s
 
 
-      0%|          | 0/512 [00:00<?, ?it/s]
+
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.50s
-    
+    Decrypt time: 1.00s
+
 
 
 ```python
@@ -404,13 +404,13 @@ imshow(img2, test2_logistic_encrypted, test2_logistic_decrypted, titles=["test2"
 ```
 
 
-    
+​    
 ![png](demo_files/demo_45_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_45_1.png)
     
 
@@ -420,24 +420,24 @@ imshow(img2, test2_logistic_encrypted, test2_logistic_decrypted, titles=["test2"
 
 ```python
 # Logistic: 图像解密 (密钥错误时)
-logistic_key_wrong = (3.6, 0.5)  # 错误密钥，正确密钥应为 (3.6, 0.6)
+logistic_key_wrong = (3.6, 0.5, 3)  # 错误密钥，正确密钥应为 (3.6, 0.6, 3)
 test1_logistic_decrypted_wrong = logistic.decrypt(test1_logistic_encrypted, logistic_key_wrong)
 test2_logistic_decrypted_wrong = logistic.decrypt(test2_logistic_encrypted, logistic_key_wrong)
 ```
 
 
-      0%|          | 0/256 [00:00<?, ?it/s]
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.13s
-    
+    Decrypt time: 0.30s
 
 
-      0%|          | 0/512 [00:00<?, ?it/s]
+
+      0%|          | 0/3 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.53s
-    
+    Decrypt time: 0.98s
+
 
 
 ```python
@@ -446,13 +446,13 @@ imshow(img2, test2_logistic_encrypted, test2_logistic_decrypted_wrong, titles=["
 ```
 
 
-    
+​    
 ![png](demo_files/demo_48_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_48_1.png)
     
 
@@ -470,13 +470,13 @@ draw_intensity_histogram(img2, test2_logistic_encrypted, is_gray=True)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_51_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_51_1.png)
     
 
@@ -492,13 +492,13 @@ draw_adjacent_pixel_auto_correlation(img2, test2_logistic_encrypted)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_53_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_53_1.png)
     
 
@@ -508,24 +508,24 @@ draw_adjacent_pixel_auto_correlation(img2, test2_logistic_encrypted)
 
 ```python
 # 使用与正确密钥极为相近的错误密钥尝试解密，模拟攻击过程
-logistic_key_attacked = (3.6, 0.599)  # 攻击密钥，正确密钥应为 (3.6, 0.6)
+logistic_key_attacked = (3.6, 0.6, 2)  # 攻击密钥，正确密钥应为 (3.6, 0.6, 3)
 test1_logistic_attacked = logistic.decrypt(test1_logistic_encrypted, logistic_key_attacked)
 test2_logistic_attacked = logistic.decrypt(test2_logistic_encrypted, logistic_key_attacked)
 ```
 
 
-      0%|          | 0/256 [00:00<?, ?it/s]
+      0%|          | 0/2 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.13s
-    
+    Decrypt time: 0.20s
 
 
-      0%|          | 0/512 [00:00<?, ?it/s]
+
+      0%|          | 0/2 [00:00<?, ?it/s]
 
 
-    Decrypt time: 0.54s
-    
+    Decrypt time: 0.73s
+
 
 
 ```python
@@ -534,13 +534,13 @@ imshow(img2, test2_logistic_attacked, titles=["test2", "test2_logistic_attacked"
 ```
 
 
-    
+​    
 ![png](demo_files/demo_56_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_56_1.png)
     
 
@@ -557,7 +557,7 @@ imshow(img2, test2_logistic_attacked, titles=["test2", "test2_logistic_attacked"
 
 ```python
 # Logistic KM: 初始化
-logistic_km_key = "hust_secret" 
+logistic_km_key = "ILoveHUST"
 logistic_km = LogisticKeyMixingCrypto(logistic_km_key)
 ```
 
@@ -574,15 +574,15 @@ test2_logistic_km_encrypted = logistic_km.encrypt(img2)
       0%|          | 0/256 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.28s
-    
+    Encryption time: 0.24s
+
 
 
       0%|          | 0/512 [00:00<?, ?it/s]
 
 
-    Encryption time: 0.99s
-    
+    Encryption time: 0.95s
+
 
 ### Logistic KM: 图像解密 (正确)
 
@@ -597,15 +597,15 @@ test2_logistic_km_decrypted = logistic_km.decrypt(test2_logistic_km_encrypted, l
       0%|          | 0/256 [00:00<?, ?it/s]
 
 
-    Decryption time: 0.34s
-    
+    Decryption time: 0.26s
+
 
 
       0%|          | 0/512 [00:00<?, ?it/s]
 
 
-    Decryption time: 1.07s
-    
+    Decryption time: 1.00s
+
 
 
 ```python
@@ -614,13 +614,13 @@ imshow(img2, test2_logistic_km_encrypted, test2_logistic_km_decrypted, titles=["
 ```
 
 
-    
+​    
 ![png](demo_files/demo_64_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_64_1.png)
     
 
@@ -630,7 +630,7 @@ imshow(img2, test2_logistic_km_encrypted, test2_logistic_km_decrypted, titles=["
 
 ```python
 # Logistic KM: 图像解密 (密钥错误时)
-logistic_km_key_wrong = "hut_secret"    # 错误密钥，正确密钥应为 hust_secret
+logistic_km_key_wrong = "ILoveYOU"    # 错误密钥，正确密钥应为 hust_secret
 test1_logistic_km_decrypted_wrong = logistic_km.decrypt(test1_logistic_km_encrypted, logistic_km_key_wrong)
 test2_logistic_km_decrypted_wrong = logistic_km.decrypt(test2_logistic_km_encrypted, logistic_km_key_wrong)
 ```
@@ -639,15 +639,15 @@ test2_logistic_km_decrypted_wrong = logistic_km.decrypt(test2_logistic_km_encryp
       0%|          | 0/256 [00:00<?, ?it/s]
 
 
-    Decryption time: 0.29s
-    
+    Decryption time: 0.25s
+
 
 
       0%|          | 0/512 [00:00<?, ?it/s]
 
 
-    Decryption time: 1.55s
-    
+    Decryption time: 1.00s
+
 
 
 ```python
@@ -656,13 +656,13 @@ imshow(img2, test2_logistic_km_encrypted, test2_logistic_km_decrypted_wrong, tit
 ```
 
 
-    
+​    
 ![png](demo_files/demo_67_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_67_1.png)
     
 
@@ -680,13 +680,13 @@ draw_intensity_histogram(img2, test2_logistic_km_encrypted, is_gray=True)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_70_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_70_1.png)
     
 
@@ -702,13 +702,13 @@ draw_adjacent_pixel_auto_correlation(img2, test2_logistic_km_encrypted)
 ```
 
 
-    
+​    
 ![png](demo_files/demo_72_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_72_1.png)
     
 
@@ -718,7 +718,7 @@ draw_adjacent_pixel_auto_correlation(img2, test2_logistic_km_encrypted)
 
 ```python
 # 使用与正确密钥极为相近的错误密钥尝试解密，模拟攻击过程
-logistic_km_key_attacked = "hust_secret1"  # 攻击密钥，正确密钥应为 hust_secret
+logistic_km_key_attacked = "ILoveHKUST"  # 攻击密钥，正确密钥应为 ILoveHUST
 test1_logistic_km_attacked = logistic_km.decrypt(test1_logistic_km_encrypted, logistic_km_key_attacked)
 test2_logistic_km_attacked = logistic_km.decrypt(test2_logistic_km_encrypted, logistic_km_key_attacked)
 ```
@@ -727,15 +727,15 @@ test2_logistic_km_attacked = logistic_km.decrypt(test2_logistic_km_encrypted, lo
       0%|          | 0/256 [00:00<?, ?it/s]
 
 
-    Decryption time: 0.28s
-    
+    Decryption time: 0.27s
+
 
 
       0%|          | 0/512 [00:00<?, ?it/s]
 
 
-    Decryption time: 1.02s
-    
+    Decryption time: 1.00s
+
 
 
 ```python
@@ -744,18 +744,12 @@ imshow(img2, test2_logistic_km_attacked, titles=["test2", "test2_logistic_km_att
 ```
 
 
-    
+​    
 ![png](demo_files/demo_75_0.png)
-    
+​    
 
 
 
-    
+
 ![png](demo_files/demo_75_1.png)
-    
-
-
-
-```python
-
-```
+   

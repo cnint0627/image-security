@@ -256,8 +256,11 @@ if __name__ == "__main__":
     # 测试代码
     key = "test"
     logistic = LogisticKeyMixingCrypto(key)
-    img = cv2.imread("../assets/hust.jpg")
+    img = cv2.imread("../assets/leno.bmp")
     img_encrypted = logistic.encrypt(img)
+    cv2.imshow("encrypted", img_encrypted)
+    cv2.waitKey(0)
+
     img_decrypted = logistic.decrypt(img_encrypted, key)
     cv2.imshow("decrypted", img_decrypted)
     cv2.waitKey(0)
