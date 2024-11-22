@@ -4,44 +4,51 @@
 
 ```
 .
-├───algorithms/		四种图像加密算法目录		
+├───algorithms/     四种图像加密算法目录		
 	|
-	├───BaseCrypto.py				四个算法的公共接口
+	├───BaseCrypto.py               四个算法的公共接口
 	|
-	├───ArnoldCatCrypto.py			基于Arnold-Cat混沌系统的图像加密算法
+	├───ArnoldCatCrypto.py          基于Arnold-Cat混沌系统的图像加密算法
 	|
-	├───LogisticCrypto.py			基于Logistic混沌系统的图像加密算法
+	├───LogisticCrypto.py           基于Logistic混沌系统的图像加密算法
 	|	
-	├───LogisticKeyMixingCrypto.py	基于密钥混合的Logistic图像加密算法
+	├───LogisticKeyMixingCrypto.py  基于密钥混合的Logistic图像加密算法
 	|
-	├───RSACrypto.py				基于图像分块的RSA图像加密算法
+	├───RSACrypto.py                基于图像分块的RSA图像加密算法
 	|
-	└───__init__.py					python软件包初始化文件
+	└───__init__.py                 python软件包初始化文件
 	
-├───assets/			测试图片目录
+├───assets/             测试图片目录
 │   
-├───demo_files/		代码说明文档用到的演示图片目录
+├───demo_files/		    代码说明文档用到的演示图片目录
 |  
-├───.gitignore		git忽略规则文件
+├───.gitignore		    git忽略规则文件
 |   
-├───README.md		代码说明文档
-|   
+├───README.md		    代码说明文档
+| 
+├───requirements.txt    软件包依赖
+| 
 ├───U202215566_刘师言_图像加密算法研究与改进/		课程报告
 |   
-├───demo.ipynb		代码演示程序
+├───demo.ipynb		    代码演示程序
 |
-└───utils.py		工具类
+└───utils.py		    工具类
 ```
+
+## 运行环境
+
+Python 3.9.12
 
 ## requirements
 
 ```
-numpy
-python-opencv
-tqdm
-PIL
-Crypto
-matplotlib
+numpy==1.26.4
+opencv-python==4.10.0.84
+tqdm==4.66.2
+Pillow==9.4.0
+pycryptodome==3.20.0
+matplotlib==3.8.3
+jupyter==1.1.1
 ```
 
 
