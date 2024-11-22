@@ -19,7 +19,7 @@ class LogisticCrypto(BaseCrypto):
     def __logistic_sequence(self, length, key):
         """生成logistic混沌序列"""
         sequence = []
-        r, x = key
+        r, x, _ = key
 
         # 丢弃前200个值以消除瞬态效应
         for _ in range(200):
@@ -60,6 +60,8 @@ class LogisticCrypto(BaseCrypto):
         """统一的图像处理函数，用于加密和解密"""
         time_start = time.time()
 
+        _, _, n = key
+
         # 获取图像信息
         matrix, w, h, color = self.__get_image_matrix(img)
 
@@ -69,49 +71,52 @@ class LogisticCrypto(BaseCrypto):
         # 生成用于扩散的混沌序列
         diffuse_seq = self.__logistic_sequence(w * h * (3 if color else 1), key)
 
-        # 置乱过程
-        if operation == 'encrypt':
-            matrix = self.__shuffle_matrix(matrix, w, h, shuffle_seq)
+        for _ in tqdm(range(n)):
 
-        # 扩散过程
-        processed = []
-        prev = 0  # 前一个像素值用于扩散
-        seq_index = 0
+            # 置乱过程
+            if operation == 'encrypt':
+                matrix = self.__shuffle_matrix(matrix, w, h, shuffle_seq)
 
-        for i in tqdm(range(w)):
-            row = []
-            for j in range(h):
-                if color:
-                    pixel = []
-                    for k in range(3):
-                        # 使用异或运算和扩散进行加密/解密
-                        if operation == 'encrypt':
-                            processed_value = (matrix[i][j][k] ^ diffuse_seq[seq_index] ^ prev) % 256
-                        else:
-                            processed_value = (matrix[i][j][k] ^ diffuse_seq[seq_index] ^ prev) % 256
-                        pixel.append(processed_value)
-                        prev = processed_value if operation == 'encrypt' else matrix[i][j][k]
-                        seq_index += 1
-                    row.append(tuple(pixel))
-                else:
-                    if operation == 'encrypt':
-                        processed_value = (matrix[i][j] ^ diffuse_seq[seq_index] ^ prev) % 256
+            # 扩散过程
+            processed = []
+            prev = 0  # 前一个像素值用于扩散
+            seq_index = 0
+
+            for i in range(w):
+                row = []
+                for j in range(h):
+                    if color:
+                        pixel = []
+                        for k in range(3):
+                            # 使用异或运算和扩散进行加密/解密
+                            if operation == 'encrypt':
+                                processed_value = (matrix[i][j][k] ^ diffuse_seq[seq_index] ^ prev) % 256
+                            else:
+                                processed_value = (matrix[i][j][k] ^ diffuse_seq[seq_index] ^ prev) % 256
+                            pixel.append(processed_value)
+                            prev = processed_value if operation == 'encrypt' else matrix[i][j][k]
+                            seq_index += 1
+                        row.append(tuple(pixel))
                     else:
-                        processed_value = (matrix[i][j] ^ diffuse_seq[seq_index] ^ prev) % 256
-                    row.append(processed_value)
-                    prev = processed_value if operation == 'encrypt' else matrix[i][j]
-                    seq_index += 1
-            processed.append(row)
+                        if operation == 'encrypt':
+                            processed_value = (matrix[i][j] ^ diffuse_seq[seq_index] ^ prev) % 256
+                        else:
+                            processed_value = (matrix[i][j] ^ diffuse_seq[seq_index] ^ prev) % 256
+                        row.append(processed_value)
+                        prev = processed_value if operation == 'encrypt' else matrix[i][j]
+                        seq_index += 1
+                processed.append(row)
 
-        matrix = processed
+            matrix = processed
 
-        # 逆置乱过程（解密时）
-        if operation == 'decrypt':
-            matrix = self.__shuffle_matrix(matrix, w, h, shuffle_seq, reverse=True)
+            # 逆置乱过程（解密时）
+            if operation == 'decrypt':
+                matrix = self.__shuffle_matrix(matrix, w, h, shuffle_seq, reverse=True)
 
         # 构建处理后的图像
         mode = "RGB" if color else "L"
         im = Image.new(mode, (w, h))
+
         for x in range(w):
             for y in range(h):
                 im.putpixel((x, y), matrix[x][y])
@@ -129,7 +134,7 @@ class LogisticCrypto(BaseCrypto):
 
 
 if __name__ == "__main__":
-    key = (3.8, 0.8)
+    key = (3.6, 0.6, 3)
     logistic = LogisticCrypto(key)
     img = cv2.imread("../assets/hust.jpg")
     img_encrypted = logistic.encrypt(img)
@@ -138,6 +143,6 @@ if __name__ == "__main__":
 
     # draw_intensity_histogram(img, img_encrypted)
 
-    img_decrypted = logistic.decrypt(img_encrypted, (3.8, 0.8))
+    img_decrypted = logistic.decrypt(img_encrypted, (3.6, 0.6, 3))
     cv2.imshow("decrypted", img_decrypted)
     cv2.waitKey(0)
